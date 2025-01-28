@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="icon" href="{% static 'images/logo.png' %}" type="image/png">
+    <title>Elora</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        nav {
+            background-color: #efe3e3;
+        }
+
+        body {
+            background-image: url("{% static 'images/backimg.jpg' %}");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-color: #00000065;
+            background-blend-mode: overlay;
+            height: 100%;
+            background-attachment: fixed;
+            flex: 1;
+        }
+
+        .container {
+            flex: 1;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #efe3e3;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            color: rgb(131 39 41);
+        }
+
+        .btn-custom {
+            background-color: rgb(131 39 41);
+            color: rgb(255, 255, 255);
+            border: none;
+            width: 100%;
+            font-weight: bold;
+        }
+
+        .btn-custom:hover {
+            background-color: rgb(177, 53, 55);
+            color: rgb(255, 255, 255);
+        }
+        .btn {
+            width: 200px;
+            background-color: rgb(131 39 41);
+            color: #efe3e3;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .btn {
+                margin-top: 20px;
+            }
+        }
+
+        @media (max-width: 1400px) {
+            .btn {
+                margin-top: 20px;
+            }
+        }
+
+        .btn:hover {
+            background-color: rgb(177, 53, 55);
+            color: #efe3e3;
+        }
+
+        footer {
+            background-color: #efe3e3;
+            color: rgb(131 39 41);
+            text-align: center;
+            padding: 20px;
+            margin-top: auto;
+        }
+
+        footer a {
+            color: rgb(131 39 41);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <img src="{% static 'images/logo.png' %}" width="130px" alt="Logo">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <form class="form-inline mr-auto">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" id="search-input" aria-label="Search">
+                <button class="btn btn-outline-light my-2 my-sm-0" id="search-btn" type="submit">Search</button>
+            </form>        
+            <ul class="navbar-nav ml-auto m-2">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}" style="color: rgb(131 39 41); font-size: 18px;">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" style="color: rgb(131 39 41); font-size: 18px;">Store</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" style="color: rgb(131 39 41); font-size: 18px;">Contact Us</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <a href="{% url 'Sign_Up' %}" class="btn mr-3">Sign Up</a>
+                <a href="{% url 'Log_In' %}" class="btn">Log In</a>
+            </form>
+        </div>
+    </nav>
+
+    <div class="container">
+        {% for message in messages %}
+        <h4>
+            <div class="alert alert-success mt-5">
+                {{ message }}
+            </div>
+        </h4>
+        {% endfor %}
+
+        <h1 class="text-center" style="color: rgb(131 39 41);">User SignUp</h1>
+        <form action="{% url 'Fun_Signup' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label>Enter Firstname</label>
+                <input type="text" class="form-control" name="fname" placeholder="Enter firstname" required>
+            </div>
+            <div class="form-group">
+                <label>Enter Lastname</label>
+                <input type="text" class="form-control" name="lname" placeholder="Enter lastname" required>
+            </div>
+            <div class="form-group">
+                <label>Enter Username</label>
+                <input type="text" class="form-control" name="username" placeholder="Enter username" required>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="form-control" name="pswd" placeholder="Enter password" required>
+            </div>
+            <div class="form-group">
+                <label>Confirm Password</label>
+                <input type="password" class="form-control" name="cfpswd" placeholder="Confirm password" required>
+            </div>
+            <div class="form-group">
+                <label>Enter Address</label>
+                <input type="text" class="form-control" name="address" placeholder="Enter address" required>
+            </div>
+            <div class="form-group">
+                <label>Enter Email</label>
+                <input type="email" class="form-control" name="email" placeholder="Enter email" required>
+            </div>
+            <div class="form-group">
+                <label>Enter Contact Number</label>
+                <input type="tel" class="form-control" name="cnum" placeholder="Enter contact number" required>
+            </div>
+            <div class="form-group">
+                <label>Upload Image</label>
+                <input type="file" class="form-control" name="img" required>
+            </div>
+            <button type="submit" class="btn btn-custom mt-3" style="width: 100%;">Submit</button>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 <a href="{% url 'home' %}">Elora</a>. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

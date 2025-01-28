@@ -1,0 +1,78 @@
+{% extends 'userNav.html' %}
+{% block content %}
+{% load static %}
+
+<style>
+    .background {
+        background-image: url('{% static "images/userpage/backimg.png" %}');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        height: 80vh;
+        background-color: rgba(0, 0, 0, 0.368);
+        background-blend-mode: overlay;
+        position: relative;
+    }
+    .overlay-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 2.5rem;
+        font-weight: bold;
+        text-align: center;
+        padding: 20px;
+        border-radius: 10px;
+        font-style: italic;
+    }
+
+</style>
+
+<div class="background">
+    <div class="overlay-text">
+        Welcome to Elora - Where Every Sparkle Tells a Story! 
+    </div>
+</div>
+
+<section class="py-5">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <img src="{% static 'images/userpage/img1.jpg' %}" alt="Jewelry Image" class="img-fluid rounded shadow">
+        </div>
+          <div class="col-md-6">
+          <h2 class="mb-4" style="color: rgb(131 39 41);font-style: italic;">Elegance Crafted for You</h2>
+          <p class="text-muted">Discover the timeless beauty of handcrafted jewelry that tells your story.Our exquisite designs are made with passion and precision, offering you the perfect blend of sophistication and style.Whether it's a gift or a personal indulgence, our pieces are crafted to make every moment sparkle.<p class="text-muted">Discover the timeless beauty of handcrafted jewelry that tells your story.Our exquisite designs are made with passion and precision, offering you the perfect blend of sophistication and style.Whether it's a gift or a personal indulgence, our pieces are crafted to make every moment sparkle.
+          </p>
+        </div>
+      </div>
+    </div>
+</section>
+  
+
+<section class="py-5">
+    <div class="container-fluid">
+        <h2 style="text-align: center;color: rgb(131 39 41);font-style: italic;">Discover our newest collections online before stepping into our store!</h2>
+      <div class="row text-center mt-5">
+        <div class="col-md-3 mb-4">
+          <img src="{% static 'images/userpage/img2.jpg' %}" alt="Portrait Image 1" class="img-fluid rounded shadow">
+        </div>
+  
+        <div class="col-md-3 mb-4">
+          <img src="{% static 'images/userpage/img3.jpg' %}" alt="Portrait Image 2" class="img-fluid rounded shadow">
+        </div>
+  
+        <div class="col-md-3 mb-4">
+          <img src="{% static 'images/userpage/img1.png' %}" alt="Portrait Image 3" class="img-fluid rounded shadow">
+        </div>
+  
+        <div class="col-md-3 mb-4">
+          <img src="{% static 'images/userpage/img2.png' %}" alt="Portrait Image 4" class="img-fluid rounded shadow">
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+{% endblock %}

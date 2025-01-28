@@ -1,0 +1,161 @@
+{% extends 'userNav.html' %}
+{% block content %}
+{% load static %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<style>
+    body {
+        background-image: url("{% static 'images/backimg.jpg' %}");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-color: #00000065;
+        background-blend-mode: overlay;
+    }
+
+    #container-table {
+        margin-top: 50px;
+        background-color: transparent;
+        border-radius: 8px;
+        width: 70%;
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 50px;
+    }
+
+    @media (max-width: 480px) {
+        #container-table {
+            width: 100%;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        overflow: hidden;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.865);
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        table-layout: fixed; /* Ensures equal column width */
+    }
+
+    th, td {
+        padding: 15px 20px;
+        text-align: center;
+        color: #fff;
+        width: 16%; /* Set all columns to equal width */
+        word-wrap: break-word; /* Allow text to wrap if needed */
+    }
+
+    th {
+        background: #efe3e3;
+        color: rgb(131, 39, 41);
+        font-size: 16px;
+        font-weight: bold;
+        text-transform: uppercase;
+        border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+    }
+
+    td {
+        background: rgba(0, 0, 0, 0.219);
+        font-size: 14px;
+        color: rgb(131, 39, 41);
+    }
+
+    td img {
+        max-width: 150px;
+        /* max-height: 80px; */
+        border-radius: 5px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        display: block;
+        margin: 0 auto; /* Center the image */
+    }
+
+    tr:hover td {
+        background: rgba(0, 0, 0, 0.345);
+        transition: background 0.3s ease;
+    }
+
+    button {
+        background-color: #efe3e3;
+        width: 80px;
+        height: 35px;
+        text-decoration: none;
+        font-weight: bold;
+        color: rgb(131, 39, 41);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #eeeeee;
+    }
+
+    a {
+        text-decoration: none;
+    }
+</style>
+
+<div class="container-fluid" id="container-table">
+    <h1 style="color: #efe3e3;">Cart</h1>
+    <table class="table table-striped table-hover table-responsive">
+        <tr>
+            {% if cart_items %}
+                <th>Product Image</th>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>Action</th>
+        </tr>
+        {% for i in cart_items %}
+            <tr>
+                <td>
+                    {% if i.Product.Product_image %}
+                        <img src="{{ i.Product.Product_image.url }}" alt="{{ i.Product.Product_name }}" width="250px">
+                    {% else %}
+                        <p>No image Available</p>
+                    {% endif %}
+                </td>
+                <td>{{ i.Product.Product_name }}</td>
+                <td>${{ i.Product.Price }}</td>
+                <td>
+                    <a href="{% url 'Decrease_quantity' i.Product.id %}"><button style="width: 25px;">-</button></a>
+                    {{ i.Quantity }}
+                    <a href="{% url 'Increase_quantity' i.Product.id %}"><button style="width: 25px;">+</button></a>
+                </td>
+                <td>${{ i.Total_price }}</td>
+                <td><a href="{% url 'deletecart_item' i.Product.id %}"><button><i class="fas fa-trash"></i> Delete</button></a></td>
+            </tr>
+        {% endfor %}
+        <tr>
+            <td colspan="4" style="color: rgb(131, 39, 41);font-weight: bold;font-size: 20px;">
+                <strong>Total Price: ${{ total_price }}</strong>
+            </td>
+            <td>
+                <a href="{% url 'Place_Order' %}"><button style="width: 250px;background-color: rgb(131, 39, 41);color: #fff;font-size: 18px;"><i class="fa-solid fa-bag-shopping"></i> Place Order</button></a>
+            </td>
+            <td></td>
+        </tr>
+        {% else %}
+            <tr>
+                <td colspan="6" class="total-price">
+                    <p style="font-size: 18px;font-weight: bold;">Your Cart is Empty</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="6">
+                    <a href="{% url 'userHome' %}"><button style="width: 250px;background-color: rgb(131, 39, 41);color: #fff;font-size: 18px;"><i class="fas fa-arrow-left" ></i> Continue Shopping</button></a>
+                </td>
+            </tr>
+        {% endif %}
+    </table>
+</div>
+
+{% endblock %}

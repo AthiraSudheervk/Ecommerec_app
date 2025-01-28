@@ -1,0 +1,219 @@
+{% extends 'navbar.html' %}
+{% block content %}
+{% load static %}
+<style>
+    .background {
+        background-image: url('{% static "images/homepage/img.jpg" %}');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        height: 80vh;
+        background-blend-mode: overlay;
+        position: relative;
+    }
+
+    .overlay-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 2.5rem;
+        font-weight: bold;
+        text-align: center;
+        padding: 20px;
+        border-radius: 10px;
+        font-style: italic;
+    }
+    .background1 {
+        background-image: url('{% static "images/homepage/img6.jpg" %}');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        height: 80vh;
+        background-blend-mode: overlay;
+        position: relative;
+        margin: 20px;
+        border-radius: 20px;
+    }
+
+    .card {
+      border: none;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 15px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+    }
+
+    .card-img-top {
+      object-fit: cover;
+      height: 300px;
+    }
+
+    .card-body {
+      background-color: #f9f9f9;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      color: rgb(131 39 41);
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    /* Section styling */
+    section.row {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 50px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    footer {
+        background-color: #efe3e3;
+        color: rgb(131 39 41);
+        text-align: center;
+        padding: 20px;
+        position: relative;
+        }
+
+
+</style>
+
+<div class="background">
+    <div class="overlay-text">
+        From Our Heart to Your Hands, Exquisite Jewelry
+    </div>
+</div>
+
+<div class="container-fluid mt-5">
+    <section class="row">
+      <!-- Card Section -->
+      <div class="col-md-4">
+        <div class="card">
+          <img src="{% static 'images/homepage/img1.jpg' %}" class="card-img-top" alt="Image 1">
+          <div class="card-body">
+            <h5 class="card-title">Wedding Collections</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card">
+          <img src="{% static 'images/homepage/img2.jpg' %}" class="card-img-top" alt="Image 2">
+          <div class="card-body">
+            <h5 class="card-title">Diamonds Collections</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card">
+          <img src="{% static 'images/homepage/img3.jpg' %}" class="card-img-top" alt="Image 3">
+          <div class="card-body">
+            <h5 class="card-title">Platinum Collections</h5>
+          </div>
+        </div>
+      </div>
+    </section>
+</div>
+
+<div class="container">
+    <div class="background1">
+    </div>
+</div>
+
+<div class="container-fluid mt-5">
+    <h1 style="text-align: center;color: rgb(131 39 41);font-style: italic;">Collections</h1>
+    <section class="row">
+      <!-- Card Section -->
+      <div class="col-md-3">
+        <div class="card">
+          <img src="{% static 'images/homepage/img5.jpg' %}" class="card-img-top" alt="Image 1">
+          <div class="card-body">
+            <h5 class="card-title">Earings</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card">
+          <img src="{% static 'images/homepage/img7.jpg' %}" class="card-img-top" alt="Image 2">
+          <div class="card-body">
+            <h5 class="card-title">Rings</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card">
+          <img src="{% static 'images/homepage/img9.jpg' %}" class="card-img-top" alt="Image 3">
+          <div class="card-body">
+            <h5 class="card-title">Simple Chains</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          <img src="{% static 'images/homepage/img8.jpg' %}" class="card-img-top" alt="Image 3">
+          <div class="card-body">
+            <h5 class="card-title">Bangles</h5>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="row mb-5">
+      <!-- Card Section -->
+      <div class="col-md-3">
+        <div class="card">
+          <img src="{% static 'images/homepage/img10.jpeg' %}" class="card-img-top" alt="Image 1">
+          <div class="card-body">
+            <h5 class="card-title">Nose Pins</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card">
+          <img src="{% static 'images/homepage/img11.jpg' %}" class="card-img-top" alt="Image 2">
+          <div class="card-body">
+            <h5 class="card-title">Anklets</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card">
+          <img src="{% static 'images/homepage/img12.jpg' %}" class="card-img-top" alt="Image 3">
+          <div class="card-body">
+            <h5 class="card-title">Golden Necklace</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          <img src="{% static 'images/homepage/img13.jpg' %}" class="card-img-top" alt="Image 3">
+          <div class="card-body">
+            <h5 class="card-title">Diamond Necklace</h5>
+          </div>
+        </div>
+      </div>
+    </section>
+</div>
+
+<!-- Footer -->
+<!-- <footer>
+  <p>&copy; 2025 Elora. All Rights Reserved.</p>
+</footer> -->
+
+
+{% endblock %}

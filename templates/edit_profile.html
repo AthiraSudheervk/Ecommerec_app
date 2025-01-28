@@ -1,0 +1,140 @@
+{% extends 'UserNav.html' %}
+{% block content %}
+{% load static %}
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        body {
+            background-image: url("{% static 'images/backimg.jpg' %}");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-color: #00000065;
+            background-blend-mode: overlay;
+            flex: 1;
+            height: 100vh;
+        }
+
+        .container {
+            flex: 1;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #efe3e3;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            color: rgb(131 39 41);
+        }
+
+        .btn-custom {
+            background-color: rgb(131 39 41);
+            color: rgb(255, 255, 255);
+            border: none;
+            width: 100%;
+            font-weight: bold;
+        }
+
+        .btn-custom:hover {
+            background-color: rgb(177, 53, 55);
+            color: rgb(255, 255, 255);
+        }
+        .btn {
+            width: 200px;
+            background-color: rgb(131 39 41);
+            color: #efe3e3;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .btn {
+                margin-top: 20px;
+            }
+        }
+
+        @media (max-width: 1400px) {
+            .btn {
+                margin-top: 20px;
+            }
+        }
+
+        .btn:hover {
+            background-color: rgb(177, 53, 55);
+            color: #efe3e3;
+        }
+
+        footer {
+            background-color: #efe3e3;
+            color: rgb(131 39 41);
+            text-align: center;
+            padding: 20px;
+            margin-top: auto;
+        }
+
+        footer a {
+            color: rgb(131 39 41);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        {% for message in messages %}
+        <h4>
+            <div class="alert alert-success mt-5">
+                {{ message }}
+            </div>
+        </h4>
+        {% endfor %}
+
+        <h1 class="text-center" style="color: rgb(131 39 41);">Edit Profile</h1>
+        <form action="{% url 'edit_profile' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label>Enter Firstname</label>
+                <input type="text" class="form-control" name="fname" placeholder="Enter firstname" value="{{user.User.first_name}}">
+            </div>
+            <div class="form-group">
+                <label>Enter Lastname</label>
+                <input type="text" class="form-control" name="lname" placeholder="Enter lastname" value="{{user.User.last_name}}">
+            </div>
+            <div class="form-group">
+                <label>Enter Username</label>
+                <input type="text" class="form-control" name="username" placeholder="Enter username" value="{{user.User.username}}">
+            </div>
+            <div class="form-group">
+                <label>Enter Address</label>
+                <input type="text" class="form-control" name="address" placeholder="Enter address" value="{{user.Address}}">
+            </div>
+            <div class="form-group">
+                <label>Enter Email</label>
+                <input type="email" class="form-control" name="email" placeholder="Enter email" value="{{user.User.email}}">
+            </div>
+            <div class="form-group">
+                <label>Enter Contact Number</label>
+                <input type="tel" class="form-control" name="cnum" placeholder="Enter contact number" value="{{user.Contact_number}}">
+            </div>
+            <div class="form-group">
+                <label>Upload Image</label>
+                <img src="{{user.Image.url}}" width="100px">
+                <input type="file" class="form-control" name="img" >
+            </div>
+            <button type="submit" class="btn btn-custom mt-3" style="width: 100%;">Submit</button>
+        </form>
+    </div>
+
+</body>
+{% endblock %}

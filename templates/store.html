@@ -1,0 +1,101 @@
+{% extends 'userNav.html' %}
+{% block content %}
+{% load static %}
+
+
+<style>
+    body {
+        background-color: #f8f9fa;
+        font-family: 'Arial', sans-serif;
+    }
+    .navbar-brand {
+        color: #fff !important;
+    }
+    .product-card {
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .product-card img {
+        border-radius: 10px;
+    }
+</style>
+
+<body>
+
+<!-- Product Section -->
+<div class="container-fluid my-5">
+    <h2 class="text-center mb-4" style="color: rgb(131 39 41);font-style: italic;">Our Collection</h2>
+    <div class="row">
+        <!-- Product 1 -->
+        <div class="col-md-4 mb-4">
+            <div class="card product-card">
+                <img src="{% static 'images/userpage/img9.jpg' %}" class="card-img-top" alt="Jewelry 1">
+                <div class="card-body">
+                    <h5 class="card-title">Silver Braclets</h5>
+                    <p class="card-text">Elegant 18k gold necklace with diamonds. Perfect for any occasion.</p>
+                    <a href="#" class="btn btn-dark">Buy Now</a>
+                </div>
+            </div>
+        </div>
+        <!-- Product 2 -->
+        <div class="col-md-4 mb-4">
+            <div class="card product-card">
+                <img src="{% static 'images/userpage/img7.jpg' %}" class="card-img-top" alt="Jewelry 2">
+                <div class="card-body">
+                    <h5 class="card-title">Diamond Earrings</h5>
+                    <p class="card-text">Sterling silver earrings with sapphire accents. A classic design.</p>
+                    <a href="#" class="btn btn-dark">Buy Now</a>
+                </div>
+            </div>
+        </div>
+        <!-- Product 3 -->
+        <div class="col-md-4 mb-4">
+            <div class="card product-card">
+                <img src="{% static 'images/userpage/img8.jpg' %}" class="card-img-top" alt="Jewelry 3">
+                <div class="card-body">
+                    <h5 class="card-title">Diamond Necklace</h5>
+                    <p class="card-text">Stunning diamond ring, designed to impress.</p>
+                    <a href="#" class="btn btn-dark">Buy Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <!-- Product 1 -->
+        <div class="col-md-4 mb-4">
+            <div class="card product-card">
+                <img src="{% static 'images/userpage/img3.png' %}" class="card-img-top" alt="Jewelry 1">
+                <div class="card-body">
+                    <h5 class="card-title">Gold Necklace</h5>
+                    <p class="card-text">Elegant 18k gold necklace with diamonds. Perfect for any occasion.</p>
+                    <a href="#" class="btn btn-dark">Buy Now</a>
+                </div>
+            </div>
+        </div>
+        <!-- Product 2 -->
+        <div class="col-md-4 mb-4">
+            <div class="card product-card">
+                <img src="{% static 'images/userpage/img6.jpg' %}" class="card-img-top" alt="Jewelry 2">
+                <div class="card-body">Gold Necklace</h5>
+                    <p class="card-text">Sterling silver earrings with sapphire accents. A classic design.</p>
+                    <a href="#" class="btn btn-dark">Buy Now</a>
+                </div>
+            </div>
+        </div>
+        <!-- Product 3 -->
+        <div class="col-md-4 mb-4">
+            <div class="card product-card">
+                <img src="{% static 'images/userpage/img10.jpg' %}" class="card-img-top" alt="Jewelry 3">
+                <div class="card-body">
+                    <h5 class="card-title">Gold Necklace</h5>
+                    <p class="card-text">Stunning diamond ring, designed to impress.</p>
+                    <a href="#" class="btn btn-dark">Buy Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

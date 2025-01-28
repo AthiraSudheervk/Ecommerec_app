@@ -1,0 +1,141 @@
+{% extends 'adminNav.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<style>
+    body {
+        background-image: url("{% static 'images/backimg.jpg' %}");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-color: #00000065;
+        background-blend-mode: overlay;
+    }
+
+    #container-table {
+        margin-top: 50px;
+        background-color: transparent;
+        /* padding: 30px; */
+        border-radius: 8px;
+        /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+        width:85%; 
+        max-width: 100%;
+        /* margin: 50px auto;  */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* padding-left: 250px; */
+        padding-left: 80px;
+    }
+    @media (max-width: 480px) {
+    /* Adjust container for smaller devices */
+        #container-table {
+            width: 100%;
+            padding-left: 10px; /* Reduce padding */
+            padding-right: 10px;
+        }
+    }
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        overflow: hidden;
+        border-radius: 10px;
+        background: rgba(0, 0, 0, 0.2);
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    th, td {
+        padding: 15px 20px;
+        text-align: center;
+        color: #fff;
+        width: 100%;
+    }
+
+    th {
+        background: #efe3e3;
+        color: rgb(131, 39, 41);
+        font-size: 16px;
+        font-weight: bold;
+        text-transform: uppercase;
+        border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+        /* Add min-width to ensure headers don't wrap */
+        min-width: 120px; /* You can adjust this value as needed */
+        white-space: nowrap; /* Prevent text from wrapping */
+    }
+
+    td {
+        background: rgba(0, 0, 0, 0.219);
+        font-size: 14px;
+    }
+
+    td img {
+        max-width: 80px;
+        max-height: 80px;
+        border-radius: 5px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    tr:hover td {
+        background: rgba(0, 0, 0, 0.345);
+        transition: background 0.3s ease;
+    }
+    button {
+        background-color: #efe3e3;
+        width: 80px;
+        height: 35px;
+        text-decoration: none;
+        font-weight: bold;
+        color: rgb(131, 39, 41);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    button:hover{
+        background-color: #eeeeee;
+    }
+
+    a {
+        text-decoration: none;
+    }
+</style>
+
+<div class="container-fluid" id="container-table">
+    <h1 style="color: #efe3e3;">Users Details</h1>
+    <table class="table table-striped table-hover table-responsive">
+        <tr>
+            <th>SL NO.</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+
+            <!-- <th>Username</th> -->
+            <th>Email</th>
+            <th>Address</th>
+            <th>Contact Number</th>
+            <th>Image</th>
+            <th></th>
+        </tr>
+        <tr>
+
+            {% for i in users %}
+
+            <td>{{i.id}}</td>
+            <td>{{i.User.first_name}}</td>
+            <td>{{i.User.last_name}}</td>
+            <!-- <td>{{i.User.username}}</td> -->
+            <td>{{i.User.email}}</td>
+            <td>{{i.Address}}</td>
+            <td>{{i.Contact_number}}</td>
+            <td><img src="{{ i.Image.url }}" width="100%"></td>
+            <td><a href="{% url 'delete_user' i.id %}"><button><i class="fas fa-trash"></i> Delete</button></a></td>
+        </tr>
+
+        {% endfor %}
+
+    </table>
+</div>
+
+{% endblock %}

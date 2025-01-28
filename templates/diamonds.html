@@ -1,0 +1,66 @@
+{% extends 'userNav.html' %}
+{% block content %}
+{% load static %}
+
+<style>
+    /* .background {
+        background-image: url('{% static "images/userpage/img4.jpg" %}');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        height: 80vh;
+        background-blend-mode: overlay;
+        position: relative;
+    } */
+    button.btn {
+        width: 100%;
+        background-color: rgb(131 39 41);
+        color: #fff;
+        font-weight: bold;
+    }
+
+    button.btn:hover {
+        background-color: rgb(177, 53, 55);
+        color: #fff;
+    }
+    .product-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .product-image {
+        height: 400px; 
+        object-fit: cover; 
+        width: 100%;
+    }
+</style>
+  
+
+<!-- <div class="background">
+    <div class="overlay-text">
+        Welcome to Elora - Where Every Sparkle Tells a Story! 
+    </div>
+</div> -->
+
+
+<section class="py-5">
+    <div class="container-fluid">
+        <h2 style="color: rgb(131 39 41);text-align: center;font-style: italic;">Diamonds Collections</h2>
+        <div class="row text-center mt-5">
+            {% for i in prdts %}
+                <div class="col-md-3 mb-4 product-container">
+                    <img src="{{ i.Product_image.url }}" alt="{{ i.Product_name }}" class="img-fluid rounded shadow product-image">
+                    <h5 class="mt-3" style="color: rgb(131 39 41);">{{ i.Product_name }}</h5>
+                    <p style="color: rgb(131 39 41); font-weight: bold;">₹ {{ i.Price }}</p>
+                    <a href="{% url 'addto_cart' i.id %}"><button class="btn  mt-2">Add to Cart</button></a>
+                </div>
+            {% empty %}
+                <p>No products available in the Gold category.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+  
+
+{% endblock %}

@@ -1,0 +1,148 @@
+{% extends 'UserNav.html' %}
+{% block content %}
+{% load static %}
+    <style>
+        body {
+            background-image: url("{% static 'images/backimg.jpg' %}");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-color: #00000082; /* background color for fallback */
+            background-blend-mode: overlay;
+            height: auto;
+            background-position: center;
+        }
+
+    .container {
+            margin-top: 50px;
+        }
+        .card {
+            margin-bottom: 30px;
+            background: rgba(255, 255, 255, 0.598);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .card-body {
+            padding: 30px;
+            text-align: left;
+            margin: 30px;
+        }
+        .card-title {
+            font-weight: bold;
+            color: rgb(131 39 41);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .table {
+            width: 100%;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border-collapse: separate;
+            border-spacing: 0 20px;
+            color: #000;
+        }
+        .table td {
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        .table td:first-child {
+            font-weight: bold;
+            width: 30%;
+        }
+        .table td:last-child {
+            width: 70%;
+        }
+        .row {
+            display: flex;
+            justify-content: center;
+        }
+        .btn {
+            color: white !important;
+            padding: 8px 15px;
+            margin-top: 20px;
+            color: #4ab7e0;
+            font-weight: bold;
+            background-color: rgb(131 39 41);
+        }
+        .btn:hover {
+            background-color:rgb(188, 44, 46);
+            color: white;
+        }
+
+        /* Centering the image */
+        .card-body img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100px;  /* Adjust as per your requirement */
+        }
+
+        /* Making buttons in the same line */
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        @media (max-width: 576px) {
+            .card-body {
+                padding: 15px;
+                margin: 10px;
+            }
+            .btn-container {
+                flex-direction: column;
+            }
+            .btn {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10 col-lg-8 col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <img src="{{ user.Image.url }}" class="img-fluid rounded-circle">
+                        <h1 class="card-title text-center pb-2">{{ user.User.username }}</h1>
+                        <table class="table">
+                            <tr>
+                                <td><strong>First Name:</strong></td>
+                                <td>{{ user.User.first_name }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Last Name:</strong></td>
+                                <td>{{ user.User.last_name }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Username:</strong></td>
+                                <td>{{ user.User.username }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Address:</strong></td>
+                                <td>{{ user.Address }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Email:</strong></td>
+                                <td>{{ user.User.email }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Contact Number:</strong></td>
+                                <td>{{ user.Contact_number }}</td>
+                            </tr>
+                        </table>
+
+                        <!-- Buttons in the same line -->
+                        <div class="btn-container">
+                            <a href="{% url 'userHome' %}" class="btn btn-sm ">Go Back</a>
+                            <a href="{% url 'edit_prf' %}" class="btn btn-sm">Edit Profile</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}

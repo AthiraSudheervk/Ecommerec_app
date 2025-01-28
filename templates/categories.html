@@ -1,0 +1,194 @@
+{% extends 'adminNav.html' %}
+{% block content %}
+{% load static %}
+
+<style>
+    body {
+        background-image: url("{% static 'images/backimg.jpg' %}");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-color: #00000065;
+        background-blend-mode: overlay;
+    }
+    .content {
+        margin-left: 250px;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .contenth1 h1 {
+        background-color: #efe3e3;
+        color: rgb(131 39 41);
+        text-align: center;
+        padding: 15px;
+        font-size: 1.8rem;
+        margin: 0;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        font-weight: bold;
+    }
+
+    .firstimg {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .firstimg img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* New Section Styles */
+    .new-section {
+        margin-top: 30px;
+    }
+
+    .new-section .col {
+        padding: 15px;
+    }
+
+    .new-section .col img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .new-section .content-text {
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: justify;
+    }
+
+    .new-section .content-text p {
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.8;
+        color: #333;
+    }
+
+    @media (max-width: 768px) {
+        .content {
+            margin-left: 0;
+            padding: 10px;
+        }
+
+        .contenth1 h1 {
+            font-size: 1.5rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .contenth1 h1 {
+            font-size: 1.2rem;
+            padding: 10px;
+        }
+
+        .firstimg img {
+            max-width: 90%;
+        }
+    }
+
+    @media (min-width:576px) {    
+             .carrd{
+               margin-left:220px;
+               margin-top:60px;
+               overflow-x: hidden;
+             }
+             .align{
+              margin-left: 280px;
+             }
+          }
+        .course-container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #efe3e3;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .brand-logo {
+            text-align: center;
+        }
+
+        .brand-logo img {
+            width: 150px;
+        }
+        label{
+            color: rgb(131 39 41);
+        }
+        .btn-custom {
+            background-color: rgb(131 39 41);
+            color: rgb(255, 255, 255);
+            border: none;
+            width: 100%;
+            font-weight: bold;
+        }
+
+        .btn-custom:hover {
+            background-color: rgb(177, 53, 55);
+            color: rgb(255, 255, 255);
+        }
+
+        .form-group label {
+            font-weight: 500;
+        }
+
+        .alert {
+            max-width: 900px;
+            margin: 0 auto 20px;
+            padding: 10px 20px;
+            position: relative;
+            background-color: #d4edda96;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+
+</style>
+
+<body>
+
+     <div class="container justify-content-center align-items-center vh-100 pt-5">
+        <div class="container">
+            {% for message in messages %}
+            <h4>
+                <div class="alert alert-success mt-5">
+                    {{ message }}
+                </div>
+            </h4>
+            {% endfor %}
+        </div> 
+
+    <div class="course-container">
+            <h1 class="text-center" style="color: rgb(131 39 41);">Add Categories</h1>
+            <form action="{% url 'add_categories' %}" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label>Enter a Category</label>
+                    <input type="text" class="form-control" name="category" placeholder="Enter category" required>
+                </div>
+                <button type="submit" class="btn btn-custom mt-3">Submit</button>
+            </form>
+            
+        </div>
+    </div>
+
+
+</body>
+
+{% endblock %}
