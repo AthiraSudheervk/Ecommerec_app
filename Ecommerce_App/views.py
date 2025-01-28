@@ -16,7 +16,9 @@ def home(request):
 @login_required(login_url='Log_In')
 def store(request):
     cat5=Categories.objects.all()
-    return render(request,'store.html',{'categories':cat5})
+    cart_counts=Cart.objects.filter(User=request.user).count()
+    cart_count=cart_counts
+    return render(request,'store.html',{'categories':cat5,'item_counts':cart_count})
 
 def contact_us(request):
     return render(request,'contact_us.html')

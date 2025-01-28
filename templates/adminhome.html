@@ -3,6 +3,11 @@
 {% load static %}
 
 <style>
+    body{
+        background-image: url("{% static 'images/admin.jpg' %}");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
     .content {
         padding: 20px;
         text-align: center;
@@ -72,11 +77,11 @@
             {% endfor %}
         </div>     -->
 
-    <div class="content">
+    <!-- <div class="content">
         <div class="firstimg">
             <img src="{% static 'images/admin.jpg' %}" alt="Admin Home" class="img-fluid">
         </div>
-    </div>
+    </div> -->
 
 
 </body>
